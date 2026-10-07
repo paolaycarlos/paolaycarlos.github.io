@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es-MX" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Paola &amp; Carlos · 2 de enero de 2027</title>
+  <meta name="description" content="Boda de Paola y Carlos. 2 de enero de 2027, Salón de Fiestas Vaivén, Chetumal, Quintana Roo.">
+  <meta name="theme-color" content="#FAF7F2">
+  <!-- Evita que buscadores indexen el sitio (no es seguridad, solo discreción) -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Vista previa al compartir por WhatsApp / redes.
+       Cambia la URL de og:image por la dirección pública de tu sitio. -->
+  <meta property="og:title" content="Paola & Carlos · 02.01.2027">
+  <meta property="og:description" content="Nos casamos. Consulta los detalles y confirma tu asistencia.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="img/compartir.jpg">
+
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+  <!-- Tipografías: Cormorant Garamond (títulos) y Jost (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__brand" data-iniciales>P &amp; C</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+      <nav id="nav-menu" class="nav__menu" aria-label="Secciones">
+        <a href="#historia">Historia</a>
+        <a href="#evento">Evento</a>
+        <a href="#itinerario">Itinerario</a>
+        <a href="#vestimenta">Vestimenta</a>
+        <a href="#galeria">Galería</a>
+        <a href="#hospedaje">Hospedaje</a>
+        <a href="#regalos" data-nav="regalos">Regalos</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#rsvp" class="nav__cta">Confirmar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============ 1. HERO ============ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="hero__inner">
+        <p class="eyebrow reveal">Nos casamos</p>
+        <h1 id="hero-titulo" class="hero__title reveal">
+          <span data-nombre1>Paola</span>
+          <span class="hero__amp" aria-hidden="true">&amp;</span>
+          <span class="sr-only">y</span>
+          <span data-nombre2>Carlos</span>
+        </h1>
+        <p class="hero__date reveal" data-fecha-corta>02 · Enero · 2027</p>
+        <p class="hero__place reveal">
+          <span data-lugar>Salón de Fiestas Vaivén</span><br>
+          <span class="muted">Chetumal, Quintana Roo</span>
+        </p>
+
+        <p class="hero__verse reveal" data-poema="hero"></p>
+
+        <div class="countdown reveal" id="countdown" role="timer" aria-live="off" aria-label="Cuenta regresiva para la boda">
+          <div class="countdown__item"><span class="countdown__num" data-cd="dias">--</span><span class="countdown__label">días</span></div>
+          <div class="countdown__item"><span class="countdown__num" data-cd="horas">--</span><span class="countdown__label">horas</span></div>
+          <div class="countdown__item"><span class="countdown__num" data-cd="min">--</span><span class="countdown__label">min</span></div>
+          <div class="countdown__item"><span class="countdown__num" data-cd="seg">--</span><span class="countdown__label">seg</span></div>
+        </div>
+
+        <div class="hero__actions reveal">
+          <a href="#rsvp" class="btn btn--primary">Confirmar asistencia</a>
+          <a href="#" class="btn btn--ghost" data-maps target="_blank" rel="noopener">Cómo llegar</a>
+        </div>
+      </div>
+      <a href="#historia" class="hero__scroll" aria-label="Bajar a Nuestra historia"><span></span></a>
+    </section>
+
+    <!-- ============ EPÍGRAFE (texto en config.js > poesia.epigrafe) ============ -->
+    <section class="epigraph" id="epigrafe" aria-label="Poema">
+      <figure class="epigraph__inner reveal">
+        <blockquote class="epigraph__verses" id="epigrafe-versos"></blockquote>
+        <figcaption class="epigraph__author" id="epigrafe-autor"></figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ 2. NUESTRA HISTORIA ============ -->
+    <section class="section" id="historia" aria-labelledby="historia-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Capítulo uno</p>
+          <h2 id="historia-titulo">Nuestra historia</h2>
+          <p class="section__lead" id="historia-intro"></p>
+        </header>
+        <ol class="story" id="historia-lista"><!-- Se llena desde config.js --></ol>
+      </div>
+    </section>
+
+    <!-- ============ 3. INFORMACIÓN DEL EVENTO ============ -->
+    <section class="section section--tint" id="evento" aria-labelledby="evento-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Los detalles</p>
+          <h2 id="evento-titulo">El evento</h2>
+          <p class="section__verse" data-poema="evento"></p>
+        </header>
+
+        <div class="event reveal">
+          <dl class="event__list">
+            <div><dt>Fecha</dt><dd data-fecha-texto></dd></div>
+            <div><dt>Hora</dt><dd data-hora-texto></dd></div>
+            <div><dt>Lugar</dt><dd data-lugar></dd></div>
+            <div><dt>Dirección</dt><dd data-direccion></dd></div>
+            <div><dt>Ciudad</dt><dd data-ciudad></dd></div>
+          </dl>
+          <div class="event__actions">
+            <a href="#" class="btn btn--primary" data-maps target="_blank" rel="noopener">Abrir en Google Maps</a>
+            <button type="button" class="btn btn--ghost" id="btn-calendario">Agregar al calendario</button>
+          </div>
+          <div class="event__map" id="mapa-contenedor" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. ITINERARIO ============ -->
+    <section class="section" id="itinerario" aria-labelledby="itinerario-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">El día</p>
+          <h2 id="itinerario-titulo">Itinerario</h2>
+          <p class="section__verse" data-poema="itinerario"></p>
+        </header>
+        <ol class="timeline" id="itinerario-lista"></ol>
+      </div>
+    </section>
+
+    <!-- ============ 5. CÓDIGO DE VESTIMENTA ============ -->
+    <section class="section section--tint" id="vestimenta" aria-labelledby="vestimenta-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Código de vestimenta</p>
+          <h2 id="vestimenta-titulo" data-vestimenta-tipo>Formal</h2>
+          <p class="section__lead" data-vestimenta-desc></p>
+        </header>
+        <div class="dress reveal">
+          <div class="dress__group">
+            <h3 class="dress__label">Colores sugeridos</h3>
+            <ul class="swatches" id="colores-sugeridos"></ul>
+          </div>
+          <div class="dress__group">
+            <h3 class="dress__label">Les pedimos evitar</h3>
+            <ul class="swatches swatches--avoid" id="colores-evitar"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. GALERÍA ============ -->
+    <section class="section" id="galeria" aria-labelledby="galeria-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Momentos</p>
+          <h2 id="galeria-titulo">Galería</h2>
+          <p class="section__verse" data-poema="galeria"></p>
+        </header>
+      </div>
+      <div class="carousel reveal" aria-roledescription="carrusel" aria-label="Fotografías">
+        <button class="carousel__btn carousel__btn--prev" aria-label="Foto anterior">&#8592;</button>
+        <ul class="carousel__track" id="galeria-track" tabindex="0"></ul>
+        <button class="carousel__btn carousel__btn--next" aria-label="Foto siguiente">&#8594;</button>
+      </div>
+      <div class="carousel__dots" id="galeria-dots" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============ 7. HOSPEDAJE ============ -->
+    <section class="section section--tint" id="hospedaje" aria-labelledby="hospedaje-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Si vienen de fuera</p>
+          <h2 id="hospedaje-titulo">Hospedaje</h2>
+          <p class="section__lead" id="hospedaje-intro"></p>
+        </header>
+        <ul class="cards" id="hoteles-lista"></ul>
+      </div>
+    </section>
+
+    <!-- ============ 8. MESA DE REGALOS ============ -->
+    <section class="section" id="regalos" aria-labelledby="regalos-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Con cariño</p>
+          <h2 id="regalos-titulo">Mesa de regalos</h2>
+          <p class="section__lead" id="regalos-mensaje"></p>
+        </header>
+        <ul class="gifts reveal" id="regalos-enlaces"></ul>
+        <div class="transfer reveal" id="transferencia" hidden>
+          <h3 class="transfer__title">Transferencia bancaria</h3>
+          <dl class="transfer__data">
+            <div><dt>Banco</dt><dd data-banco></dd></div>
+            <div><dt>Titular</dt><dd data-titular></dd></div>
+            <div><dt>CLABE</dt><dd><span data-clabe class="mono"></span>
+              <button type="button" class="link-btn" id="copiar-clabe">Copiar</button></dd></div>
+            <div><dt>Concepto</dt><dd data-concepto></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. RSVP ============ -->
+    <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-titulo">
+      <div class="container container--form">
+        <header class="section__head reveal">
+          <p class="eyebrow">RSVP</p>
+          <h2 id="rsvp-titulo">Confirmar asistencia</h2>
+          <p class="section__verse" data-poema="rsvp"></p>
+          <p class="section__lead">Ingresa el código que aparece en tu invitación. Fecha límite: <span data-fecha-limite></span>.</p>
+        </header>
+
+        <div class="rsvp" id="rsvp-app">
+          <!-- Aviso de modo demostración -->
+          <p class="notice notice--demo" id="rsvp-demo" hidden>
+            Modo demostración: prueba con <span class="mono">PRUEBA1</span> o <span class="mono">PRUEBA2</span>. Las respuestas solo se guardan en este navegador.
+          </p>
+
+          <!-- PASO 1: código -->
+          <form class="rsvp__step" id="paso-codigo" novalidate>
+            <label for="codigo" class="field__label">Código de invitación</label>
+            <div class="code-row">
+              <input id="codigo" name="codigo" class="field__input field__input--code" type="text"
+                     inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false"
+                     maxlength="20" placeholder="Ej. K7QM4A" aria-describedby="codigo-msg" required>
+              <button type="submit" class="btn btn--primary" id="btn-validar">Continuar</button>
+            </div>
+            <p class="field__msg" id="codigo-msg" role="alert" aria-live="assertive"></p>
+          </form>
+
+          <!-- PASO 2: datos -->
+          <form class="rsvp__step" id="paso-datos" hidden novalidate>
+            <div class="invite-card">
+              <p class="invite-card__eyebrow">Invitación para</p>
+              <p class="invite-card__name" id="inv-familia"></p>
+              <p class="invite-card__seats"><span id="inv-lugares"></span></p>
+              <p class="invite-card__prev" id="inv-previa" hidden></p>
+            </div>
+
+            <fieldset class="field">
+              <legend class="field__label">¿Nos acompañan?</legend>
+              <div class="choice">
+                <label class="choice__opt"><input type="radio" name="asistencia" value="si" checked><span>Sí, ahí estaremos</span></label>
+                <label class="choice__opt"><input type="radio" name="asistencia" value="no"><span>No podremos asistir</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="nombre" class="field__label">Nombre completo de quien confirma</label>
+              <input id="nombre" name="nombre" class="field__input" type="text" autocomplete="name" maxlength="80" required>
+            </div>
+
+            <div class="field">
+              <label for="telefono" class="field__label">Teléfono o WhatsApp <span class="muted">(opcional)</span></label>
+              <input id="telefono" name="telefono" class="field__input" type="tel" autocomplete="tel" maxlength="20">
+            </div>
+
+            <div id="bloque-asistentes">
+              <div class="field">
+                <label for="asistentes" class="field__label">Número de asistentes</label>
+                <select id="asistentes" name="asistentes" class="field__input"></select>
+                <p class="field__hint" id="asistentes-hint"></p>
+              </div>
+
+              <div class="field" id="nombres-asistentes">
+                <!-- Campos de nombre por asistente (se generan con JS) -->
+              </div>
+
+              <div class="field">
+                <label for="restricciones" class="field__label">Restricciones alimenticias <span class="muted">(opcional)</span></label>
+                <input id="restricciones" name="restricciones" class="field__input" type="text" maxlength="200"
+                       placeholder="Vegetariano, alergias, etc.">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="comentarios" class="field__label">Comentarios <span class="muted">(opcional)</span></label>
+              <textarea id="comentarios" name="comentarios" class="field__input" rows="3" maxlength="500"></textarea>
+            </div>
+
+            <!-- Campo trampa contra bots: los humanos no lo ven -->
+            <div class="hp" aria-hidden="true">
+              <label for="sitio_web">No llenar</label>
+              <input id="sitio_web" name="sitio_web" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <p class="field__msg" id="datos-msg" role="alert" aria-live="assertive"></p>
+
+            <div class="rsvp__actions">
+              <button type="button" class="btn btn--ghost" id="btn-volver">Cambiar código</button>
+              <button type="submit" class="btn btn--primary" id="btn-enviar">Enviar confirmación</button>
+            </div>
+          </form>
+
+          <!-- PASO 3: resultado -->
+          <div class="rsvp__step rsvp__done" id="paso-final" hidden tabindex="-1">
+            <p class="rsvp__done-mark" aria-hidden="true">✓</p>
+            <h3 id="final-titulo">¡Gracias!</h3>
+            <p id="final-texto"></p>
+            <p class="rsvp__mesa" id="final-mesa" hidden></p>
+            <button type="button" class="link-btn" id="btn-editar">Modificar mi respuesta</button>
+          </div>
+
+          <!-- Cerrado por fecha -->
+          <div class="rsvp__step rsvp__closed" id="paso-cerrado" hidden>
+            <p>El periodo de confirmación terminó. Si necesitas hacer un cambio, escríbenos por WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 10. PREGUNTAS FRECUENTES ============ -->
+    <section class="section section--tint" id="faq" aria-labelledby="faq-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Dudas</p>
+          <h2 id="faq-titulo">Preguntas frecuentes</h2>
+        </header>
+        <div class="accordion" id="faq-lista"></div>
+      </div>
+    </section>
+
+    <!-- ============ 11. CONTACTO ============ -->
+    <section class="section" id="contacto" aria-labelledby="contacto-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Hablemos</p>
+          <h2 id="contacto-titulo">Contacto</h2>
+        </header>
+        <div class="contact reveal">
+          <a class="contact__btn" id="wa-novia" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+            <span>WhatsApp <span data-wa-nombre="novia">Paola</span></span>
+          </a>
+          <a class="contact__btn" id="wa-novio" target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+            <span>WhatsApp <span data-wa-nombre="novio">Carlos</span></span>
+          </a>
+          <a class="contact__btn" data-maps target="_blank" rel="noopener">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+            <span>Ubicación</span>
+          </a>
+          <a class="contact__btn" id="correo">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.4V17h16V7.4l-8 5.3-8-5.3ZM5.2 7 12 11.5 18.8 7H5.2Z"/></svg>
+            <span>Correo electrónico</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__verse" data-poema="despedida"></p>
+    <p class="footer__mono" data-iniciales>P &amp; C</p>
+    <p class="muted" data-fecha-corta>02 · Enero · 2027</p>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotografías" hidden>
+    <button class="lightbox__close" aria-label="Cerrar">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" aria-label="Anterior">&#8592;</button>
+    <figure class="lightbox__figure">
+      <img id="lightbox-img" alt="">
+      <figcaption id="lightbox-cap" class="lightbox__cap"></figcaption>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" aria-label="Siguiente">&#8594;</button>
+  </div>
+
+  <!-- Aviso breve (copiado, etc.) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- El orden importa: primero la configuración, luego la lógica -->
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
