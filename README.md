@@ -51,14 +51,14 @@ El enlace actual de Maps es una búsqueda por nombre del salón; funciona, pero 
 ## 3. Publicar en GitHub Pages
 
 1. Crea una cuenta en github.com (si no tienes).
-2. Botón **New repository**. Nómbralo exactamente `TU-USUARIO.github.io` (con tu nombre de usuario). Así el sitio queda en la dirección raíz, sin carpetas: `https://TU-USUARIO.github.io/`. Visibilidad: **Public** (Pages gratuito requiere repositorio público en cuentas gratuitas).
+2. Botón **New repository**. Nómbralo exactamente `paolaycarlos.github.io` (con tu nombre de usuario). Así el sitio queda en la dirección raíz, sin carpetas: `https://paolaycarlos.github.io/`. Visibilidad: **Public** (Pages gratuito requiere repositorio público en cuentas gratuitas).
    - El nombre de usuario no se compra: es gratuito y forma parte de la dirección. Elígelo pensando en eso (p. ej. `paolaycarlos`).
 3. En el repositorio: **Add file → Upload files**. Arrastra el *contenido* de la carpeta `sitio` (no la carpeta en sí): `index.html`, `.nojekyll`, `css/`, `js/`, `img/`, `README.md`.
    - Si no ves `.nojekyll` por ser archivo oculto, no pasa nada: el sitio funciona sin él.
 4. **Commit changes**.
 5. **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `(root)` → Save**.
-6. En 1–3 minutos el sitio queda en `https://TU-USUARIO.github.io/`.
-7. Edita `og:image` en `index.html` con la URL completa: `https://TU-USUARIO.github.io/img/compartir.jpg` (WhatsApp la necesita absoluta para la vista previa).
+6. En 1–3 minutos el sitio queda en `https://paolaycarlos.github.io/`.
+7. En `index.html`, busca las dos líneas marcadas con `← EDITAR` (`og:url` y `og:image`) y reemplaza `paolaycarlos` por tu usuario. Sin la dirección completa, WhatsApp no muestra la imagen de vista previa.
 
 Para cambios posteriores: abre el archivo en GitHub, ícono de lápiz, edita, **Commit**. Se actualiza en un par de minutos (si no ves el cambio en el teléfono, recarga o abre en ventana privada).
 
@@ -152,17 +152,17 @@ Si tienes Microsoft 365 empresarial, Power Automate puede avisarte por correo cu
 
 ## 7. Generar códigos QR
 
-**Un QR general (al sitio):** usa la URL `https://TU-USUARIO.github.io/`.
+**Un QR general (al sitio):** usa la URL `https://paolaycarlos.github.io/`.
 
 **Un QR por familia (recomendado):** el sitio acepta el código en la URL y valida automáticamente al abrir:
 
 ```
-https://TU-USUARIO.github.io/?i=K7QM4A
+https://paolaycarlos.github.io/?i=K7QM4A
 ```
 
 El invitado escanea o toca el enlace y llega directo a su confirmación, sin teclear nada. El enlace no muestra nombres: solo un código como `?i=K7QM4A`.
 
-`invitados.csv` ya trae el enlace personal de cada grupo; solo reemplaza `TU-USUARIO` por tu usuario de GitHub (en Excel o Sheets: Buscar y reemplazar).
+`invitados.csv` ya trae el enlace personal de cada grupo; solo reemplaza `paolaycarlos` por tu usuario de GitHub (en Excel o Sheets: Buscar y reemplazar).
 
 Opciones para generarlos:
 
@@ -173,12 +173,12 @@ Opciones para generarlos:
   ```
   ```python
   import qrcode
-  BASE = "https://TU-USUARIO.github.io/?i={}"
+  BASE = "https://paolaycarlos.github.io/?i={}"
   codigos = ["K7QM4A", "P3XT9C", "M4HQ7R"]   # o léelos de invitados.csv
   for c in codigos:
       qrcode.make(BASE.format(c), box_size=12, border=2).save(f"qr-{c}.png")
   ```
-- **En Google Sheets** (columna junto al código): `=IMAGE("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="&ENCODEURL("https://TU-USUARIO.github.io/?i="&A2))`
+- **En Google Sheets** (columna junto al código): `=IMAGE("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="&ENCODEURL("https://paolaycarlos.github.io/?i="&A2))`
   (Si tu hoja está en configuración regional de México y marca error, cambia las comas por punto y coma.)
 
 Imprime el QR de al menos 2 × 2 cm y pruébalo con dos teléfonos distintos antes de mandar a imprenta.

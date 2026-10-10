@@ -36,12 +36,22 @@ const CONFIG = {
     mapaEmbedURL: ""
   },
 
+  /* ---------------- BIENVENIDA ----------------
+     Aparece justo después de la portada. Cada elemento de "parrafos" es un párrafo. */
+  bienvenida: {
+    titulo: "Bienvenidos a nuestra boda",
+    parrafos: [
+      "Únanse a nosotros mientras comenzamos nuestro próximo capítulo juntos.",
+      "Tienen un lugar especial en nuestros corazones; por eso queremos que sean testigos del momento en que digamos: «¡Sí, acepto!»"
+    ]
+  },
+
   /* ---------------- TEXTOS POÉTICOS ----------------
      Frases breves que acompañan cada sección. Puedes cambiarlas o dejar ""
      para ocultar cualquiera. Todas son originales, salvo la de Bécquer
      (dominio público). */
   poesia: {
-    hero: "Una tarde de enero, frente a quienes más queremos, diremos que sí.",
+    hero: "Frente a la bahía, al caer la tarde.",
     epigrafe: {
       versos: [
         "Por una mirada, un mundo;",
@@ -111,19 +121,13 @@ const CONFIG = {
   /* ---------------- CÓDIGO DE VESTIMENTA ---------------- */
   vestimenta: {
     tipo: "Formal",
-    descripcion: "Traje para ellos; vestido largo o de cóctel para ellas. La celebración es en interior.",  // PENDIENTE: confirmar
-    sugeridos: [
-      { nombre: "Verde olivo", hex: "#6B7350" },
-      { nombre: "Azul bahía",  hex: "#3F5F73" },
-      { nombre: "Terracota",   hex: "#B4694A" },
-      { nombre: "Arena",       hex: "#D9C7A7" },
-      { nombre: "Gris carbón", hex: "#3A3A3A" }
-    ],
-    noRecomendados: [
-      { nombre: "Blanco",  hex: "#FFFFFF", nota: "Reservado para la novia" },
-      { nombre: "Marfil",  hex: "#F3EBDD", nota: "" },
-      { nombre: "Champán", hex: "#E8D7B9", nota: "" }
-    ]
+    descripcion: "Los invitamos a vestir de manera formal pero cómoda. Nuestro único deseo es que se sientan increíbles y listos para celebrar con nosotros. Siéntanse libres de elegir su mejor conjunto.",
+    // Recomendación práctica (deja "" para ocultarla)
+    aviso: "Estaremos frente a la Bahía de Chetumal: habrá viento y seguramente estará fresco. Les sugerimos llevar un suéter, saco o chal ligero.",
+    // Paletas de color opcionales. Si las dos listas están vacías, no se muestran.
+    // Formato: { nombre: "Verde olivo", hex: "#6B7350", nota: "" }
+    sugeridos: [],
+    noRecomendados: []
   },
 
   /* ---------------- GALERÍA ----------------
@@ -141,22 +145,27 @@ const CONFIG = {
   /* ---------------- HOSPEDAJE ---------------- */
   hospedaje: {
     intro: "Algunas opciones para quienes nos visitan desde fuera de Chetumal.",
+    // Campos opcionales por hotel: nota (texto breve) y boton (texto del botón).
     hoteles: [
-      { nombre: "Fiesta Inn Chetumal",              distancia: "Distancia por confirmar", nota: "", url: "https://www.google.com/maps/search/?api=1&query=Fiesta+Inn+Chetumal" },             // PENDIENTE
-      { nombre: "Hotel Los Cocos",                  distancia: "Distancia por confirmar", nota: "", url: "https://www.google.com/maps/search/?api=1&query=Hotel+Los+Cocos+Chetumal" },         // PENDIENTE
-      { nombre: "Holiday Inn Chetumal Puerta Maya", distancia: "Distancia por confirmar", nota: "", url: "https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Chetumal+Puerta+Maya" } // PENDIENTE
+      { nombre: "Hotel Urban101 Chetumal", url: "https://maps.app.goo.gl/TxBWssqMbcDaNdRg9" },
+      { nombre: "Fiesta Inn Chetumal",     url: "https://www.google.com/maps/search/?api=1&query=Fiesta+Inn+Chetumal" },
+      { nombre: "Hotel Los Cocos",         url: "https://www.google.com/maps/search/?api=1&query=Hotel+Los+Cocos+Chetumal" }
     ]
   },
 
   /* ---------------- MESA DE REGALOS ---------------- */
   regalos: {
-    mensaje: "Su presencia es lo más importante. Si desean hacernos un regalo, dejamos estas opciones.",
+    mensaje: "El mejor regalo que podemos recibir en este día tan especial es su presencia y sus buenos deseos. Si además desean tener un detalle con nosotros, ponemos a su disposición nuestra wishlist.",
     enlaces: [
-      // PENDIENTE: agrega aquí tus mesas de regalos reales, por ejemplo:
-      // { nombre: "Mesa de regalos Liverpool", detalle: "Evento n.º 00000000", url: "https://mesaderegalos.liverpool.com.mx/" },
+      { nombre: "Nuestra wishlist", detalle: "Mesa de regalos en Amazon", url: "https://www.amazon.com.mx/wedding/guest-view/2US8J5QRJHBU6" }
+    ],
+    // Párrafos que aparecen debajo de los enlaces
+    notas: [
+      "O, si lo prefieren, contaremos con un cofre con sobres para efectivo.",
+      "Gracias por formar parte de nuestras vidas."
     ],
     transferencia: {
-      mostrar: false,                // PENDIENTE: cambiar a true cuando tengas los datos
+      mostrar: false,                // true para mostrar datos bancarios
       banco: "Nombre del banco",
       titular: "Nombre del titular",
       clabe: "000000000000000000",

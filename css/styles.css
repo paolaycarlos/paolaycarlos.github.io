@@ -215,6 +215,24 @@ button { font: inherit; color: inherit; }
 .footer__verse { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
 .rsvp__mesa { font-family: var(--font-display); font-size: 1.5rem; color: var(--accent); }
 
+/* ---------- 6c. Bienvenida ---------- */
+.welcome { padding: clamp(4.5rem, 12vw, 7rem) 1.25rem 0; text-align: center; background: var(--bg); }
+.welcome__inner { max-width: 34rem; margin: 0 auto; }
+.welcome__title { font-size: clamp(2.2rem, 8vw, 3.2rem); margin-bottom: 1.5rem; }
+.welcome__text p { font-family: var(--font-display); font-size: clamp(1.3rem, 4.6vw, 1.55rem); line-height: 1.5; color: var(--ink-soft); margin-bottom: 1rem; }
+.welcome__text p:last-child { margin-bottom: 0; }
+
+/* ---------- 6d. Vestimenta: aviso / Regalos: notas ---------- */
+.dress__note {
+  max-width: 30rem; margin: 0 auto; padding: 1rem 1.25rem; text-align: center;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  font-size: .95rem; color: var(--ink-soft);
+}
+.dress__note + .dress { margin-top: 2.5rem; }
+.gifts__notes { text-align: center; margin-top: 2rem; }
+.gifts__notes p { color: var(--ink-soft); margin-bottom: .6rem; }
+.gifts__notes p:last-child { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--ink); margin-top: 1.25rem; }
+
 /* ---------- 7. Historia (línea del tiempo) ---------- */
 .story { position: relative; display: grid; gap: clamp(3rem, 8vw, 5rem); }
 .story::before {

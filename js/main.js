@@ -107,6 +107,14 @@
     io.observe(node);
   }
 
+  /* ---------- 2b. Bienvenida ---------- */
+  function renderBienvenida() {
+    const b = CONFIG.bienvenida;
+    if (!b || (!b.titulo && !(b.parrafos || []).length)) { $("#bienvenida").hidden = true; return; }
+    $("#bienvenida-titulo").textContent = b.titulo || "";
+    (b.parrafos || []).forEach(t => $("#bienvenida-texto").append(el("p", { text: t })));
+  }
+
   /* ---------- 3. Navegación ---------- */
   function initNav() {
     const nav = $("#nav"), btn = $(".nav__toggle"), menu = $("#nav-menu");
@@ -188,8 +196,14 @@
       el("span", { class: "swatch__chip", style: `background:${c.hex}`, "aria-hidden": "true" }),
       el("span", { class: "swatch__name", text: c.nombre }),
       c.nota && el("span", { class: "swatch__note", text: c.nota }));
-    v.sugeridos.forEach(c => $("#colores-sugeridos").append(swatch(c)));
-    v.noRecomendados.forEach(c => $("#colores-evitar").append(swatch(c)));
+    const sug = v.sugeridos || [], evi = v.noRecomendados || [];
+    sug.forEach(c => $("#colores-sugeridos").append(swatch(c)));
+    evi.forEach(c => $("#colores-evitar").append(swatch(c)));
+    // Oculta cada paleta vacía, y el bloque completo si no hay ninguna
+    $("#colores-sugeridos").parentElement.hidden = !sug.length;
+    $("#colores-evitar").parentElement.hidden = !evi.length;
+    $("#vestimenta-colores").hidden = !sug.length && !evi.length;
+    if (v.aviso) { $("#vestimenta-aviso").textContent = v.aviso; $("#vestimenta-aviso").hidden = false; }
   }
 
   /* ---------- 6. Galería: carrusel + lightbox ---------- */
@@ -285,10 +299,10 @@
     CONFIG.hospedaje.hoteles.forEach(h => {
       $("#hoteles-lista").append(el("li", { class: "card reveal" },
         el("h3", { class: "card__title", text: h.nombre }),
-        el("p", { class: "card__meta", text: h.distancia }),
+        h.distancia && el("p", { class: "card__meta", text: h.distancia }),
         h.nota && el("p", { class: "card__note", text: h.nota }),
         el("span", { class: "card__spacer" }),
-        el("a", { class: "btn btn--ghost", href: h.url, target: "_blank", rel: "noopener", text: "Ver y reservar" })));
+        el("a", { class: "btn btn--ghost", href: h.url, target: "_blank", rel: "noopener", text: h.boton || "Ver ubicación" })));
     });
   }
 
@@ -296,7 +310,8 @@
     const r = CONFIG.regalos;
     $("#regalos-mensaje").textContent = r.mensaje;
     // Sin enlaces ni transferencia: se oculta la sección completa
-    if (!r.enlaces.length && !(r.transferencia && r.transferencia.mostrar)) {
+    (r.notas || []).forEach(t => $("#regalos-notas").append(el("p", { text: t })));
+    if (!r.enlaces.length && !(r.notas || []).length && !(r.transferencia && r.transferencia.mostrar)) {
       $("#regalos").hidden = true;
       $$('[data-nav="regalos"]').forEach(a => { a.hidden = true; });
       return;
@@ -712,7 +727,7 @@
   /* ---------- Arranque ---------- */
   document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.classList.remove("no-js");
-    const pasos = [renderGenerales, initNav, initCountdown, renderHistoria, renderItinerario,
+    const pasos = [renderGenerales, renderBienvenida, initNav, initCountdown, renderHistoria, renderItinerario,
       renderVestimenta, initGaleria, renderHospedaje, renderRegalos, renderFAQ, renderContacto,
       initCalendario, initRSVP, initReveal];
     // Si una sección falla (p. ej. un error de dedo en config.js), las demás siguen funcionando
