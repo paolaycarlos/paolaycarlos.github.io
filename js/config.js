@@ -204,10 +204,10 @@ const CONFIG = {
        "forms"  → alternativa con Microsoft Forms.
   */
   rsvp: {
-    modo: "demo",
+    modo: "sheets",
     fechaLimiteISO: "2026-12-01T23:59:59-05:00",
     fechaLimiteTexto: "1 de diciembre de 2026",
-    sheetsURL: "",               // PENDIENTE: URL /exec de Apps Script
+    sheetsURL: "https://script.google.com/macros/s/AKfycbz_HKBLAwGOhfXYv2jlvvZXED_xTH2Rz9uCmxcB8zjY5eJKEbhmv7U1zo2A2vIQk0fm/exec",               // PENDIENTE: URL /exec de Apps Script
     formsURL: "",
     maxIntentos: 5,
     // Mostrar al invitado su número de mesa después de confirmar.
