@@ -74,30 +74,22 @@ const CONFIG = {
     intro: "No empezó con un gran momento, sino con muchos pequeños que fueron sumando.",
     hitos: [
       {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "Nos conocimos",
-        texto: "Cómo se conocieron, en dos o tres líneas.",               // PENDIENTE
+        fecha: "I",                                                    
+        titulo: "Enamorarte",
+        texto: "Nuestro amor fue creciendo, en lo contidiano, sin prisa, hasta volverse imprescindible.",
         imagen: "img/historia/historia-01.jpg",
-        alt: "Paola y Carlos el día que se conocieron"
       },
       {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "Un recuerdo nuestro",
-        texto: "Un momento que les guste contar.",                        // PENDIENTE
+        fecha: "II",                                                     
+        titulo: "Rumbo compartido",
+        texto: "Entre maletas, nuevos lugares y kilómetros recorridos y por recorrer, descubrimos que el mejor destino siempre ha sido el otro. ",                        
         imagen: "img/historia/historia-02.jpg",
-        alt: "Paola y Carlos juntos"
+        
       },
       {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "La propuesta",
-        texto: "Dónde y cómo fue la pregunta.",                           // PENDIENTE
-        imagen: "img/historia/historia-03.jpg",
-        alt: "El momento de la propuesta"
-      },
-      {
-        fecha: "2027",
-        titulo: "Nos casamos",
-        texto: "Y queremos que estés ahí cuando lo hagamos oficial.",
+        fecha: "III",
+        titulo: "El paso definitivo",
+        texto: "No hizo falta nada más, la decisión más importante de nuestras vidas ya estaba tomada: queremos seguir sumando años de complicidad. Lo demás es historia y queremos escribirla frente a ustedes.",
         imagen: "",
         alt: ""
       }
@@ -139,7 +131,9 @@ const CONFIG = {
     { src: "img/galeria/foto-03.jpg", alt: "Fotografía 3 de Paola y Carlos" },
     { src: "img/galeria/foto-04.jpg", alt: "Fotografía 4 de Paola y Carlos" },
     { src: "img/galeria/foto-05.jpg", alt: "Fotografía 5 de Paola y Carlos" },
-    { src: "img/galeria/foto-06.jpg", alt: "Fotografía 6 de Paola y Carlos" }
+    { src: "img/galeria/foto-06.jpg", alt: "Fotografía 6 de Paola y Carlos" },
+    { src: "img/galeria/foto-07.jpg", alt: "Fotografía 7 de Paola y Carlos" },
+    { src: "img/galeria/foto-08.jpg", alt: "Fotografía 8 de Paola y Carlos" }
   ],
 
   /* ---------------- HOSPEDAJE ---------------- */
@@ -153,25 +147,17 @@ const CONFIG = {
     ]
   },
 
-  /* ---------------- MESA DE REGALOS ---------------- */
+/* ---------------- MESA DE REGALOS ---------------- */
   regalos: {
-    mensaje: "El mejor regalo que podemos recibir en este día tan especial es su presencia y sus buenos deseos. Si además desean tener un detalle con nosotros, ponemos a su disposición nuestra wishlist.",
+    mensaje: "El mejor regalo que podemos recibir es su presencia y sus buenos deseos en este día tan especial. Sin embargo, si desean tener un detalle adicional con nosotros, contaremos con un cofre para sobres en la recepción o, si lo prefieren, ponemos a su disposición nuestra mesa de regalos en línea.",
     enlaces: [
       { nombre: "Nuestra wishlist", detalle: "Mesa de regalos en Amazon", url: "https://www.amazon.com.mx/wedding/guest-view/2US8J5QRJHBU6" }
     ],
     // Párrafos que aparecen debajo de los enlaces
     notas: [
-      "O, si lo prefieren, contaremos con un cofre con sobres para efectivo.",
-      "Gracias por formar parte de nuestras vidas."
-    ],
-    transferencia: {
-      mostrar: false,                // true para mostrar datos bancarios
-      banco: "Nombre del banco",
-      titular: "Nombre del titular",
-      clabe: "000000000000000000",
-      concepto: "Boda Paola y Carlos"
-    }
-  },
+      "¡Muchas gracias por acompañarnos y formar parte de nuestras vidas!"
+    ]
+  }
 
   /* ---------------- PREGUNTAS FRECUENTES ---------------- */
   faq: [
