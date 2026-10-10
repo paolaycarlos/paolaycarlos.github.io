@@ -49,10 +49,10 @@
         <a href="#evento">Evento</a>
         <a href="#itinerario">Itinerario</a>
         <a href="#vestimenta">Vestimenta</a>
+        <a href="#regalos" data-nav="regalos">Regalos</a>
         <a href="#galeria">Galería</a>
         <a href="#hospedaje">Hospedaje</a>
         <a href="#faq">Preguntas</a>
-        <a href="#regalos" data-nav="regalos">Regalos</a>
         <a href="#rsvp" class="nav__cta">Confirmar</a>
       </nav>
     </div>
@@ -181,8 +181,31 @@
       </div>
     </section>
 
-    <!-- ============ 6. GALERÍA ============ -->
-    <section class="section" id="galeria" aria-labelledby="galeria-titulo">
+    <!-- ============ 6. MESA DE REGALOS ============ -->
+    <section class="section" id="regalos" aria-labelledby="regalos-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Con cariño</p>
+          <h2 id="regalos-titulo">Mesa de regalos</h2>
+          <p class="section__lead" id="regalos-mensaje"></p>
+        </header>
+        <ul class="gifts reveal" id="regalos-enlaces"></ul>
+        <div class="gifts__notes reveal" id="regalos-notas"></div>
+        <div class="transfer reveal" id="transferencia" hidden>
+          <h3 class="transfer__title">Transferencia bancaria</h3>
+          <dl class="transfer__data">
+            <div><dt>Banco</dt><dd data-banco></dd></div>
+            <div><dt>Titular</dt><dd data-titular></dd></div>
+            <div><dt>CLABE</dt><dd><span data-clabe class="mono"></span>
+              <button type="button" class="link-btn" id="copiar-clabe">Copiar</button></dd></div>
+            <div><dt>Concepto</dt><dd data-concepto></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. GALERÍA ============ -->
+    <section class="section section--tint" id="galeria" aria-labelledby="galeria-titulo">
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">Momentos</p>
@@ -198,8 +221,8 @@
       <div class="carousel__dots" id="galeria-dots" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 7. HOSPEDAJE ============ -->
-    <section class="section section--tint" id="hospedaje" aria-labelledby="hospedaje-titulo">
+    <!-- ============ 8. HOSPEDAJE ============ -->
+    <section class="section" id="hospedaje" aria-labelledby="hospedaje-titulo">
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">Si vienen de fuera</p>
@@ -210,7 +233,7 @@
       </div>
     </section>
 
-    <!-- ============ 8. RSVP ============ -->
+    <!-- ============ 9. RSVP ============ -->
     <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-titulo">
       <div class="container container--form">
         <header class="section__head reveal">
@@ -319,7 +342,7 @@
       </div>
     </section>
 
-    <!-- ============ 9. PREGUNTAS FRECUENTES ============ -->
+    <!-- ============ 10. PREGUNTAS FRECUENTES ============ -->
     <section class="section section--tint" id="faq" aria-labelledby="faq-titulo">
       <div class="container container--narrow">
         <header class="section__head reveal">
@@ -330,31 +353,8 @@
       </div>
     </section>
 
-    <!-- ============ 10. MESA DE REGALOS ============ -->
-    <section class="section" id="regalos" aria-labelledby="regalos-titulo">
-      <div class="container container--narrow">
-        <header class="section__head reveal">
-          <p class="eyebrow">Con cariño</p>
-          <h2 id="regalos-titulo">Mesa de regalos</h2>
-          <p class="section__lead" id="regalos-mensaje"></p>
-        </header>
-        <ul class="gifts reveal" id="regalos-enlaces"></ul>
-        <div class="gifts__notes reveal" id="regalos-notas"></div>
-        <div class="transfer reveal" id="transferencia" hidden>
-          <h3 class="transfer__title">Transferencia bancaria</h3>
-          <dl class="transfer__data">
-            <div><dt>Banco</dt><dd data-banco></dd></div>
-            <div><dt>Titular</dt><dd data-titular></dd></div>
-            <div><dt>CLABE</dt><dd><span data-clabe class="mono"></span>
-              <button type="button" class="link-btn" id="copiar-clabe">Copiar</button></dd></div>
-            <div><dt>Concepto</dt><dd data-concepto></dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
     <!-- ============ 11. CONTACTO ============ -->
-    <section class="section section--tint" id="contacto" aria-labelledby="contacto-titulo">
+    <section class="section" id="contacto" aria-labelledby="contacto-titulo">
       <div class="container container--narrow">
         <header class="section__head reveal">
           <p class="eyebrow">Hablemos</p>

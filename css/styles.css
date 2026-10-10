@@ -229,9 +229,12 @@ button { font: inherit; color: inherit; }
   font-size: .95rem; color: var(--ink-soft);
 }
 .dress__note + .dress { margin-top: 2.5rem; }
+.gift.gift--featured { justify-content: flex-start; gap: 1.1rem; background: var(--accent-lt); border-color: var(--accent); }
+.gift__icon { width: 30px; height: 30px; flex: 0 0 auto; fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-linejoin: round; }
+.gift__body { display: flex; flex-direction: column; }
 .gifts__notes { text-align: center; margin-top: 2rem; }
 .gifts__notes p { color: var(--ink-soft); margin-bottom: .6rem; }
-.gifts__notes p:last-child { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--ink); margin-top: 1.25rem; }
+.gifts__notes p:last-child { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; color: var(--ink); }
 
 /* ---------- 7. Historia (línea del tiempo) ---------- */
 .story { position: relative; display: grid; gap: clamp(3rem, 8vw, 5rem); }
@@ -243,7 +246,7 @@ button { font: inherit; color: inherit; }
   content: ""; position: absolute; left: 3px; top: .55rem; width: 9px; height: 9px;
   border-radius: 50%; background: var(--bg); border: 1px solid var(--accent);
 }
-.story__date { font-size: .75rem; letter-spacing: .28em; color: var(--accent); }
+.story__date { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; letter-spacing: .08em; color: var(--accent); margin: 0; }
 .story__title { font-size: 2rem; margin: .3rem 0 .6rem; }
 .story__text { color: var(--ink-soft); max-width: 30rem; }
 .story__img { aspect-ratio: 4 / 5; overflow: hidden; background: var(--bg-tint); }
@@ -256,9 +259,11 @@ button { font: inherit; color: inherit; }
   .story__item:nth-child(even) .story__body { order: 2; }
   .story__item:nth-child(odd)  .story__body { text-align: right; }
   .story__item:nth-child(odd)  .story__text { margin-left: auto; }
-  .story__item--noimg .story__body { grid-column: 1 / -1; text-align: center !important; }
-  .story__item--noimg .story__text { margin-inline: auto; }
-  .story__item--noimg::before { top: -1.25rem; }
+  /* Hitos sin foto: el texto alterna a izquierda y derecha de la línea */
+  .story__item--noimg:nth-child(odd)  .story__body { grid-column: 1; }
+  .story__item--noimg:nth-child(even) .story__body { grid-column: 2; order: 0; }
+  .story__item--noimg::before { top: 1rem; }
+  .story--sinfotos { gap: 3.5rem; }
   .story__img { max-width: 360px; }
   .story__item:nth-child(odd) .story__img { justify-self: start; }
   .story__item:nth-child(even) .story__img { justify-self: end; }

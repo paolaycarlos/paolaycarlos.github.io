@@ -69,37 +69,34 @@ const CONFIG = {
   },
 
   /* ---------------- NUESTRA HISTORIA ----------------
-     Agrega, quita o reordena hitos. "imagen" puede ser "" para un hito sin foto. */
+     Cada hito: etiqueta (opcional, p. ej. "I" o "2019"), titulo, texto,
+     imagen (opcional) y alt (descripción breve de la foto).
+     Para cambiar las fotos, reemplaza los archivos en img/historia/
+     conservando el nombre (JPG vertical 4:5, p. ej. 800×1000). */
   historia: {
-    intro: "No empezó con un gran momento, sino con muchos pequeños que fueron sumando.",
+    eyebrow: "Antes del sí",
+    intro: "Una historia sin guion, pero con la mejor compañía.",
     hitos: [
       {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "Nos conocimos",
-        texto: "Cómo se conocieron, en dos o tres líneas.",               // PENDIENTE
+        etiqueta: "I",
+        titulo: "Años de caminar juntos",
+        texto: "Aprendimos que nuestro amor fue creciendo en lo cotidiano, sin prisa, hasta volverse imprescindible.",
         imagen: "img/historia/historia-01.jpg",
-        alt: "Paola y Carlos el día que se conocieron"
-      },
-      {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "Un recuerdo nuestro",
-        texto: "Un momento que les guste contar.",                        // PENDIENTE
-        imagen: "img/historia/historia-02.jpg",
         alt: "Paola y Carlos juntos"
       },
       {
-        fecha: "Año",                                                     // PENDIENTE
-        titulo: "La propuesta",
-        texto: "Dónde y cómo fue la pregunta.",                           // PENDIENTE
-        imagen: "img/historia/historia-03.jpg",
-        alt: "El momento de la propuesta"
+        etiqueta: "II",
+        titulo: "Historias de ruta",
+        texto: "Viajamos, crecimos, aprendimos y confirmamos que cualquier destino solo es bueno si el otro va al lado.",
+        imagen: "img/historia/historia-02.jpg",
+        alt: "Paola y Carlos de viaje"
       },
       {
-        fecha: "2027",
-        titulo: "Nos casamos",
-        texto: "Y queremos que estés ahí cuando lo hagamos oficial.",
-        imagen: "",
-        alt: ""
+        etiqueta: "III",
+        titulo: "El paso definitivo",
+        texto: "La decisión más importante de nuestras vidas ya estaba tomada: queremos seguir sumando años de complicidad. Lo demás es historia, y queremos escribirla frente a ustedes.",
+        imagen: "img/historia/historia-03.jpg",
+        alt: "Paola y Carlos"
       }
     ]
   },
@@ -155,14 +152,18 @@ const CONFIG = {
 
   /* ---------------- MESA DE REGALOS ---------------- */
   regalos: {
-    mensaje: "El mejor regalo que podemos recibir en este día tan especial es su presencia y sus buenos deseos. Si además desean tener un detalle con nosotros, ponemos a su disposición nuestra wishlist.",
+    mensaje: "El mejor regalo que podemos recibir es su presencia y sus buenos deseos en este día tan especial. Sin embargo, si desean tener un detalle adicional con nosotros, contaremos con un cofre para sobres en la recepción o, si lo prefieren, ponemos a su disposición nuestra mesa de regalos en línea.",
+    // Tarjeta destacada que aparece ANTES de los enlaces (deja titulo: "" para ocultarla)
+    cofre: {
+      titulo: "Cofre para sobres",
+      detalle: "Lo encontrarán en la recepción, el día de la boda."
+    },
     enlaces: [
       { nombre: "Nuestra wishlist", detalle: "Mesa de regalos en Amazon", url: "https://www.amazon.com.mx/wedding/guest-view/2US8J5QRJHBU6" }
     ],
     // Párrafos que aparecen debajo de los enlaces
     notas: [
-      "O, si lo prefieren, contaremos con un cofre con sobres para efectivo.",
-      "Gracias por formar parte de nuestras vidas."
+      "¡Muchas gracias por acompañarnos y formar parte de nuestras vidas!"
     ],
     transferencia: {
       mostrar: false,                // true para mostrar datos bancarios

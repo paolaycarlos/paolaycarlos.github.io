@@ -160,12 +160,14 @@
   /* ---------- 5. Historia, itinerario, vestimenta ---------- */
   function renderHistoria() {
     $("#historia-intro").textContent = CONFIG.historia.intro;
+    if (CONFIG.historia.eyebrow) $("#historia .eyebrow").textContent = CONFIG.historia.eyebrow;
     const lista = $("#historia-lista");
+    if (!CONFIG.historia.hitos.some(h => h.imagen)) lista.classList.add("story--sinfotos");
     CONFIG.historia.hitos.forEach(h => {
       const conImg = Boolean(h.imagen);
       lista.append(el("li", { class: `story__item reveal${conImg ? "" : " story__item--noimg"}` },
         el("div", { class: "story__body" },
-          el("p", { class: "story__date", text: h.fecha }),
+          (h.etiqueta || h.fecha) && el("p", { class: "story__date", text: h.etiqueta || h.fecha }),
           el("h3", { class: "story__title", text: h.titulo }),
           el("p", { class: "story__text", text: h.texto })
         ),
@@ -315,6 +317,21 @@
       $("#regalos").hidden = true;
       $$('[data-nav="regalos"]').forEach(a => { a.hidden = true; });
       return;
+    }
+    // Cofre de sobres: tarjeta destacada, antes de los enlaces
+    if (r.cofre && r.cofre.titulo) {
+      const ns = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(ns, "svg");
+      svg.setAttribute("viewBox", "0 0 24 24"); svg.setAttribute("aria-hidden", "true"); svg.setAttribute("class", "gift__icon");
+      const path = document.createElementNS(ns, "path");
+      path.setAttribute("d", "M3 6h18v12H3z M3 6l9 7 9-7");
+      svg.append(path);
+      $("#regalos-enlaces").append(el("li", {},
+        el("div", { class: "gift gift--featured" },
+          svg,
+          el("span", { class: "gift__body" },
+            el("span", { class: "gift__name", text: r.cofre.titulo }),
+            r.cofre.detalle && el("span", { class: "gift__detail", text: r.cofre.detalle })))));
     }
     r.enlaces.forEach(g => {
       $("#regalos-enlaces").append(el("li", {},
