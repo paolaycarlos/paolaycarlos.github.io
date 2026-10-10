@@ -127,6 +127,36 @@
     $$("a", menu).forEach(a => a.addEventListener("click", cerrar));
     document.addEventListener("keydown", e => { if (e.key === "Escape") cerrar(); });
 
+    // Saltos internos (#rsvp, #historia…) que llegan exactos aunque las fotos sigan
+    // cargando: si la página cambia de alto durante el recorrido, se corrige el destino.
+    const reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function irA(destino) {
+      const ir = () => window.scrollTo({
+        top: destino.getBoundingClientRect().top + window.scrollY - nav.offsetHeight,
+        behavior: reducido ? "auto" : "smooth"
+      });
+      ir();
+      if (!("ResizeObserver" in window)) return;
+      let alto = document.body.scrollHeight;
+      const ro = new ResizeObserver(() => {
+        if (document.body.scrollHeight !== alto) { alto = document.body.scrollHeight; ir(); }
+      });
+      ro.observe(document.body);
+      // Deja de corregir a los 4 s o en cuanto el usuario toca la pantalla o la rueda
+      const fin = () => { ro.disconnect(); ["wheel", "touchstart", "keydown"].forEach(t => window.removeEventListener(t, fin)); };
+      ["wheel", "touchstart", "keydown"].forEach(t => window.addEventListener(t, fin, { passive: true, once: true }));
+      setTimeout(fin, 4000);
+    }
+    document.addEventListener("click", e => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || a.getAttribute("href").length < 2) return;
+      const destino = document.getElementById(a.getAttribute("href").slice(1));
+      if (!destino) return;
+      e.preventDefault();
+      history.pushState(null, "", a.getAttribute("href")); // conserva ?i=CODIGO en la dirección
+      irA(destino);
+    });
+
     const onScroll = () => nav.classList.toggle("is-solid", window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
