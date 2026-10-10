@@ -9,12 +9,21 @@
   <!-- Evita que buscadores indexen el sitio (no es seguridad, solo discreción) -->
   <meta name="robots" content="noindex, nofollow">
 
-  <!-- Vista previa al compartir por WhatsApp / redes.
-       Cambia la URL de og:image por la dirección pública de tu sitio. -->
-  <meta property="og:title" content="Paola & Carlos · 02.01.2027">
-  <meta property="og:description" content="Nos casamos. Consulta los detalles y confirma tu asistencia.">
+  <!-- ===== VISTA PREVIA AL COMPARTIR (WhatsApp, Facebook, Telegram) =====
+       WhatsApp solo muestra la imagen si la dirección es COMPLETA (https://...).
+       Reemplaza paolaycarlos por tu usuario de GitHub en las DOS líneas marcadas. -->
+  <meta property="og:site_name" content="Paola & Carlos">
+  <meta property="og:title" content="Paola & Carlos · Nos casamos">
+  <meta property="og:description" content="2 de enero de 2027 · Salón de Fiestas Vaivén, Chetumal. Consulta los detalles y confirma tu asistencia.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="img/compartir.jpg">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:url" content="https://paolaycarlos.github.io/">                      <!-- ← EDITAR -->
+  <meta property="og:image" content="https://paolaycarlos.github.io/img/compartir.jpg">  <!-- ← EDITAR -->
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Paola & Carlos, 2 de enero de 2027, Chetumal">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 
@@ -42,8 +51,8 @@
         <a href="#vestimenta">Vestimenta</a>
         <a href="#galeria">Galería</a>
         <a href="#hospedaje">Hospedaje</a>
-        <a href="#regalos" data-nav="regalos">Regalos</a>
         <a href="#faq">Preguntas</a>
+        <a href="#regalos" data-nav="regalos">Regalos</a>
         <a href="#rsvp" class="nav__cta">Confirmar</a>
       </nav>
     </div>
@@ -82,6 +91,14 @@
         </div>
       </div>
       <a href="#historia" class="hero__scroll" aria-label="Bajar a Nuestra historia"><span></span></a>
+    </section>
+
+    <!-- ============ BIENVENIDA (texto en config.js > bienvenida) ============ -->
+    <section class="welcome" id="bienvenida" aria-labelledby="bienvenida-titulo">
+      <div class="welcome__inner reveal">
+        <h2 id="bienvenida-titulo" class="welcome__title"></h2>
+        <div class="welcome__text" id="bienvenida-texto"></div>
+      </div>
     </section>
 
     <!-- ============ EPÍGRAFE (texto en config.js > poesia.epigrafe) ============ -->
@@ -150,7 +167,8 @@
           <h2 id="vestimenta-titulo" data-vestimenta-tipo>Formal</h2>
           <p class="section__lead" data-vestimenta-desc></p>
         </header>
-        <div class="dress reveal">
+        <p class="dress__note reveal" id="vestimenta-aviso" hidden></p>
+        <div class="dress reveal" id="vestimenta-colores">
           <div class="dress__group">
             <h3 class="dress__label">Colores sugeridos</h3>
             <ul class="swatches" id="colores-sugeridos"></ul>
@@ -192,29 +210,7 @@
       </div>
     </section>
 
-    <!-- ============ 8. MESA DE REGALOS ============ -->
-    <section class="section" id="regalos" aria-labelledby="regalos-titulo">
-      <div class="container container--narrow">
-        <header class="section__head reveal">
-          <p class="eyebrow">Con cariño</p>
-          <h2 id="regalos-titulo">Mesa de regalos</h2>
-          <p class="section__lead" id="regalos-mensaje"></p>
-        </header>
-        <ul class="gifts reveal" id="regalos-enlaces"></ul>
-        <div class="transfer reveal" id="transferencia" hidden>
-          <h3 class="transfer__title">Transferencia bancaria</h3>
-          <dl class="transfer__data">
-            <div><dt>Banco</dt><dd data-banco></dd></div>
-            <div><dt>Titular</dt><dd data-titular></dd></div>
-            <div><dt>CLABE</dt><dd><span data-clabe class="mono"></span>
-              <button type="button" class="link-btn" id="copiar-clabe">Copiar</button></dd></div>
-            <div><dt>Concepto</dt><dd data-concepto></dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 9. RSVP ============ -->
+    <!-- ============ 8. RSVP ============ -->
     <section class="section section--rsvp" id="rsvp" aria-labelledby="rsvp-titulo">
       <div class="container container--form">
         <header class="section__head reveal">
@@ -323,7 +319,7 @@
       </div>
     </section>
 
-    <!-- ============ 10. PREGUNTAS FRECUENTES ============ -->
+    <!-- ============ 9. PREGUNTAS FRECUENTES ============ -->
     <section class="section section--tint" id="faq" aria-labelledby="faq-titulo">
       <div class="container container--narrow">
         <header class="section__head reveal">
@@ -334,8 +330,31 @@
       </div>
     </section>
 
+    <!-- ============ 10. MESA DE REGALOS ============ -->
+    <section class="section" id="regalos" aria-labelledby="regalos-titulo">
+      <div class="container container--narrow">
+        <header class="section__head reveal">
+          <p class="eyebrow">Con cariño</p>
+          <h2 id="regalos-titulo">Mesa de regalos</h2>
+          <p class="section__lead" id="regalos-mensaje"></p>
+        </header>
+        <ul class="gifts reveal" id="regalos-enlaces"></ul>
+        <div class="gifts__notes reveal" id="regalos-notas"></div>
+        <div class="transfer reveal" id="transferencia" hidden>
+          <h3 class="transfer__title">Transferencia bancaria</h3>
+          <dl class="transfer__data">
+            <div><dt>Banco</dt><dd data-banco></dd></div>
+            <div><dt>Titular</dt><dd data-titular></dd></div>
+            <div><dt>CLABE</dt><dd><span data-clabe class="mono"></span>
+              <button type="button" class="link-btn" id="copiar-clabe">Copiar</button></dd></div>
+            <div><dt>Concepto</dt><dd data-concepto></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 11. CONTACTO ============ -->
-    <section class="section" id="contacto" aria-labelledby="contacto-titulo">
+    <section class="section section--tint" id="contacto" aria-labelledby="contacto-titulo">
       <div class="container container--narrow">
         <header class="section__head reveal">
           <p class="eyebrow">Hablemos</p>
