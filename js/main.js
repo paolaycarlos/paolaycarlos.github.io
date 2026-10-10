@@ -162,6 +162,7 @@
     $("#historia-intro").textContent = CONFIG.historia.intro;
     if (CONFIG.historia.eyebrow) $("#historia .eyebrow").textContent = CONFIG.historia.eyebrow;
     const lista = $("#historia-lista");
+    const fotosHistoria = CONFIG.historia.hitos.filter(h => h.imagen).map(h => ({ src: h.imagen, alt: h.alt || h.titulo }));
     if (!CONFIG.historia.hitos.some(h => h.imagen)) lista.classList.add("story--sinfotos");
     CONFIG.historia.hitos.forEach(h => {
       const conImg = Boolean(h.imagen);
@@ -172,7 +173,9 @@
           el("p", { class: "story__text", text: h.texto })
         ),
         conImg && el("figure", { class: "story__img" },
-          el("img", { src: h.imagen, alt: h.alt || h.titulo, loading: "lazy", decoding: "async", width: "800", height: "1000" }))
+          el("button", { type: "button", class: "story__zoom", "aria-label": `Ampliar foto: ${h.alt || h.titulo}`,
+              onclick: () => Visor.abrir(fotosHistoria, fotosHistoria.findIndex(f => f.src === h.imagen)) },
+            el("img", { src: h.imagen, alt: h.alt || h.titulo, loading: "lazy", decoding: "async" })))
       ));
     });
   }
@@ -208,7 +211,63 @@
     if (v.aviso) { $("#vestimenta-aviso").textContent = v.aviso; $("#vestimenta-aviso").hidden = false; }
   }
 
-  /* ---------- 6. Galería: carrusel + lightbox ---------- */
+  /* ---------- 6b. Visor de fotos (lightbox) ----------
+     Visor.abrir(listaDeFotos, indice): lo usan la galería y la historia.
+     Cada foto: { src, alt }. */
+  const Visor = (() => {
+    const lb = $("#lightbox"), img = $("#lightbox-img"), cap = $("#lightbox-cap");
+    const navs = $$(".lightbox__nav", lb);
+    let fotos = [], actual = 0, ultimoFoco = null;
+
+    function mostrar(i) {
+      actual = (i + fotos.length) % fotos.length;
+      img.src = fotos[actual].src;
+      img.alt = fotos[actual].alt || "";
+      cap.textContent = fotos.length > 1 ? `${actual + 1} / ${fotos.length}` : "";
+    }
+    function abrir(lista, i) {
+      fotos = lista;
+      navs.forEach(n => { n.hidden = fotos.length < 2; });
+      ultimoFoco = document.activeElement;
+      mostrar(i);
+      lb.hidden = false;
+      document.body.style.overflow = "hidden";
+      $(".lightbox__close", lb).focus();
+    }
+    function cerrar() {
+      lb.hidden = true;
+      document.body.style.overflow = "";
+      ultimoFoco && ultimoFoco.focus();
+    }
+    $(".lightbox__close", lb).addEventListener("click", cerrar);
+    $(".lightbox__nav--prev", lb).addEventListener("click", () => mostrar(actual - 1));
+    $(".lightbox__nav--next", lb).addEventListener("click", () => mostrar(actual + 1));
+    lb.addEventListener("click", e => { if (e.target === lb) cerrar(); });
+    document.addEventListener("keydown", e => {
+      if (lb.hidden) return;
+      if (e.key === "Escape") cerrar();
+      if (e.key === "ArrowRight" && fotos.length > 1) mostrar(actual + 1);
+      if (e.key === "ArrowLeft" && fotos.length > 1) mostrar(actual - 1);
+      if (e.key === "Tab") { // Mantiene el foco dentro del visor
+        const foc = $$("button:not([hidden])", lb);
+        const idx = foc.indexOf(document.activeElement);
+        e.preventDefault();
+        foc[(idx + (e.shiftKey ? -1 : 1) + foc.length) % foc.length].focus();
+      }
+    });
+    // Deslizar con el dedo
+    let x0 = null;
+    lb.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", e => {
+      if (x0 === null || fotos.length < 2) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) mostrar(actual + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+    return { abrir };
+  })();
+
+  /* ---------- 6. Galería: carrusel ---------- */
   function initGaleria() {
     const fotos = CONFIG.galeria;
     const track = $("#galeria-track"), dots = $("#galeria-dots");
@@ -216,7 +275,7 @@
 
     fotos.forEach((f, i) => {
       track.append(el("li", { class: "carousel__slide", "aria-label": `${i + 1} de ${fotos.length}` },
-        el("button", { type: "button", "aria-label": `Ampliar: ${f.alt}`, onclick: () => abrir(i) },
+        el("button", { type: "button", "aria-label": `Ampliar: ${f.alt}`, onclick: () => Visor.abrir(fotos, i) },
           el("img", { src: f.src, alt: f.alt, loading: i < 2 ? "eager" : "lazy", decoding: "async", width: "800", height: "1000" }))));
       dots.append(el("span"));
     });
@@ -246,53 +305,6 @@
     track.addEventListener("scroll", () => requestAnimationFrame(marcar), { passive: true });
     marcar();
 
-    // --- Lightbox ---
-    const lb = $("#lightbox"), img = $("#lightbox-img"), cap = $("#lightbox-cap");
-    let actual = 0, ultimoFoco = null;
-
-    function mostrar(i) {
-      actual = (i + fotos.length) % fotos.length;
-      img.src = fotos[actual].src;
-      img.alt = fotos[actual].alt;
-      cap.textContent = `${actual + 1} / ${fotos.length}`;
-    }
-    function abrir(i) {
-      ultimoFoco = document.activeElement;
-      mostrar(i);
-      lb.hidden = false;
-      document.body.style.overflow = "hidden";
-      $(".lightbox__close", lb).focus();
-    }
-    function cerrar() {
-      lb.hidden = true;
-      document.body.style.overflow = "";
-      ultimoFoco && ultimoFoco.focus();
-    }
-    $(".lightbox__close", lb).addEventListener("click", cerrar);
-    $(".lightbox__nav--prev", lb).addEventListener("click", () => mostrar(actual - 1));
-    $(".lightbox__nav--next", lb).addEventListener("click", () => mostrar(actual + 1));
-    lb.addEventListener("click", e => { if (e.target === lb) cerrar(); });
-    document.addEventListener("keydown", e => {
-      if (lb.hidden) return;
-      if (e.key === "Escape") cerrar();
-      if (e.key === "ArrowRight") mostrar(actual + 1);
-      if (e.key === "ArrowLeft") mostrar(actual - 1);
-      if (e.key === "Tab") { // Mantiene el foco dentro del visor
-        const foc = $$("button", lb);
-        const idx = foc.indexOf(document.activeElement);
-        e.preventDefault();
-        foc[(idx + (e.shiftKey ? -1 : 1) + foc.length) % foc.length].focus();
-      }
-    });
-    // Deslizar con el dedo
-    let x0 = null;
-    lb.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener("touchend", e => {
-      if (x0 === null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 50) mostrar(actual + (dx < 0 ? 1 : -1));
-      x0 = null;
-    });
   }
 
   /* ---------- 7. Hospedaje, regalos, preguntas, contacto ---------- */
@@ -575,7 +587,7 @@
       selAsist.innerHTML = "";
       for (let i = 1; i <= lugares; i++) selAsist.append(el("option", { value: i, text: i }));
       selAsist.value = String(lugares);
-      $("#asistentes-hint").textContent = `Máximo ${lugares}.`;
+      $("#asistentes-hint").textContent = `Incluyéndote a ti. Máximo ${lugares}.`;
 
       // Si ya respondieron antes, se muestra y se precarga
       const prev = $("#inv-previa");
@@ -606,6 +618,7 @@
 
     // Un campo de nombre por asistente
     function generarNombres(prellenados = []) {
+      if (!cfg.pedirNombres) { nombresBox.hidden = true; nombresBox.innerHTML = ""; return; }
       const actuales = $$("input", nombresBox).map(i => i.value);
       const valores = actuales.length ? actuales : prellenados;
       const n = Number(selAsist.value);
@@ -655,14 +668,14 @@
       if (nombre.length < 3) { $("#nombre").setAttribute("aria-invalid", "true"); $("#nombre").focus(); return mensaje(msgDatos, MENSAJES.nombre); }
       if (asistencia === "si") {
         if (asistentes < 1 || asistentes > sesion.lugares) return mensaje(msgDatos, MENSAJES.excede(sesion.lugares));
-        const vacio = $$("input", nombresBox).find(i => !i.value.trim());
+        const vacio = cfg.pedirNombres && $$("input", nombresBox).find(i => !i.value.trim());
         if (vacio) { vacio.focus(); return mensaje(msgDatos, MENSAJES.nombres); }
       }
 
       const datos = {
         codigo: sesion.codigo,
         asistencia, nombre, asistentes,
-        nombres: asistencia === "si" ? nombres.slice(0, asistentes) : [],
+        nombres: asistencia === "si" && cfg.pedirNombres ? nombres.slice(0, asistentes) : [],
         telefono: $("#telefono").value.trim(),
         restricciones: asistencia === "si" ? $("#restricciones").value.trim() : "",
         comentarios: $("#comentarios").value.trim()
