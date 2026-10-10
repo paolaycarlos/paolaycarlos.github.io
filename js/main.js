@@ -515,6 +515,7 @@
     const selAsist = $("#asistentes"), bloqueAsist = $("#bloque-asistentes"), nombresBox = $("#nombres-asistentes");
 
     let sesion = null; // { codigo, familia, lugares, previa }
+    let cargaDesdeEnlace = false; // true mientras se valida el código que vino en el enlace
 
     if (modo === "demo") $("#rsvp-demo").hidden = false;
 
@@ -613,7 +614,8 @@
       alternarAsistencia();
       mensaje(msgDatos, "");
       mostrar(pasoDatos);
-      $("#nombre").focus({ preventScroll: true });
+      if (!cargaDesdeEnlace) $("#nombre").focus({ preventScroll: true });
+      cargaDesdeEnlace = false;
     }
 
     // Un campo de nombre por asistente
@@ -737,10 +739,11 @@
     const params = new URLSearchParams(location.search);
     const desdeURL = params.get("i") || params.get("codigo");
     if (desdeURL) {
+      cargaDesdeEnlace = true;
       inputCodigo.value = normalizarCodigo(desdeURL);
       pasoCodigo.requestSubmit ? pasoCodigo.requestSubmit() : pasoCodigo.dispatchEvent(new Event("submit"));
-      // Lleva al invitado directo a su confirmación
-      setTimeout(() => $("#rsvp").scrollIntoView({ behavior: "smooth" }), 400);
+      // Opcional: llevar al invitado directo a su confirmación
+      if (cfg.saltarAConfirmar) setTimeout(() => $("#rsvp").scrollIntoView({ behavior: "smooth" }), 400);
     }
   }
 

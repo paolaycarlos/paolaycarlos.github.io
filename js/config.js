@@ -212,6 +212,9 @@ const CONFIG = {
     maxIntentos: 5,
     // true = pide el nombre de cada asistente; false = solo el número
     pedirNombres: false,
+    // Al abrir un enlace personal (?i=CODIGO): true = baja sola hasta "Confirmar asistencia";
+    // false = la página abre desde arriba y el formulario ya está listo cuando el invitado llega.
+    saltarAConfirmar: false,
     // Mostrar al invitado su número de mesa después de confirmar.
     // Recomendado false hasta que el acomodo esté cerrado.
     mostrarMesa: false
