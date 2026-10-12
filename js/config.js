@@ -152,7 +152,7 @@ const CONFIG = {
 
   /* ---------------- MESA DE REGALOS ---------------- */
   regalos: {
-    mensaje: "El mejor regalo que podemos recibir es su presencia y sus buenos deseos en este día tan especial. Sin embargo, si desean tener un detalle adicional con nosotros, contaremos con un cofre para sobres en la recepción o, si lo prefieren, ponemos a su disposición nuestra mesa de regalos en línea.",
+    mensaje: "El mejor regalo que podemos recibir es su presencia y sus buenos deseos en este día tan especial. Sin embargo, si desean tener un detalle adicional con nosotros, contaremos con un cofre para sobres en la recepción o, si lo prefieren, ponemos a su disposición nuestra mesa de regalos en línea, ya sea como inspiración o para elegir algo directamente en ella.",
     // Tarjeta destacada que aparece ANTES de los enlaces (deja titulo: "" para ocultarla)
     cofre: {
       titulo: "Cofre para sobres",
